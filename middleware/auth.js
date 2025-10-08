@@ -5,9 +5,10 @@ import User from "../models/User.js";
 export const auth = async (req, res, next) => {
   // 1. Token dhundo - ya to cookie me ya Authorization header me
   console.log("req.cookie-->", req.cookies);
-  console.log("req.header-->", req.header);
-  console.log("Authorization-->", req.header.authorization);
-  const token = req.cookies.token || req.header("Authorization")?.split(" ")[1];
+  console.log("req.headers-->", req.headers);
+  console.log("Authorization-->", req.headers.authorization);
+  const token =
+    req.cookies.token || req.headers("Authorization")?.split(" ")[1];
 
   // 2. Agar token nahi mila to reject karo
   if (!token) {

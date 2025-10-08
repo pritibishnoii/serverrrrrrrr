@@ -9,7 +9,7 @@ import {
   // updateProfile,
   // updateProfileImage,
   getUserProfile,
-} from "../controllers/user.controllers.js";
+} from "../controllers/userController.js";
 import { auth } from "../middleware/auth.js";
 // import uploadToCloudinary from "../middleware/cloudinaryUpload.js";
 

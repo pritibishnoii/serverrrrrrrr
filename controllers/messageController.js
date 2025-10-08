@@ -7,7 +7,7 @@ export const sendMessage = async (req, res) => {
   try {
     const text = req.body.text;
     const userId = req.user._id; //from token
-    const reciverId = req.params.recieverId;
+    const receiverId = req.params.recieverId;
     let mediaUrl = null; //video/image url
     let mediaUrlPublicId = null; //video/image url
     let mediaType = null; // [video,image]
@@ -20,7 +20,7 @@ export const sendMessage = async (req, res) => {
 
     const newMessage = new Message({
       senderId: userId,
-      reciverId, //   sm-> reciverId: reciverId,
+      receiverId, //   sm-> reciverId: reciverId,
       text,
       mediaUrl,
       mediaType,
@@ -66,7 +66,7 @@ export const getMessages = async (req, res) => {
   const { id: recieverId } = req.params;
   const senderId = req.user?._id;
   try {
-    const messages = await Message({
+    const messages = await Message.find({
       $or: [
         { senderId: senderId, recieverId: recieverId },
         { senderId: recieverId, recieverId: senderId },

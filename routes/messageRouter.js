@@ -4,14 +4,14 @@ import {
   getMessages,
   getUsersForChatting,
   sendMessage,
-} from "../controllers/message.controllers.js";
+} from "../controllers/messageController.js";
 import { auth } from "../middleware/auth.js";
 import uploadToCloudinary from "../middleware/cloudinaryUpload.js";
 
 const messageRouter = express.Router();
 
-messageRouter.post("/users", auth, getUsersForChatting);
-messageRouter.post("/:id", auth, getMessages);
+messageRouter.get("/users", auth, getUsersForChatting);
+messageRouter.get("/:id", auth, getMessages);
 
 messageRouter.post(
   "/send/:reciverId",
